@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><3</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      background-color: #050510;
+      color: #e4e9ff;
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 2rem;
+      color: #d2dfff;
+      text-align: center;
+      text-shadow: 0 0 6px rgba(185, 215, 255, 0.2);
+      letter-spacing: 0.05em;
+    }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1100px;
+}
+
+
+.gallery-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(180, 220, 255, 0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .caption {
+      padding: 0.6rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccd6ff;
+    }
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr; /* Stack on small screens */
+  }
+}
+
+  </style>
+<style>
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 20, 0.95);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(200, 220, 255, 0.2);
+  }
+
+  .lightbox:active {
+    display: none;
+  }
+</style>
+
+</head>
+
+<body>
+  <h1>The Night Sky rn - 19 April 2025</h1>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="images/sky1.png" />
+      <div class="caption">If you look straight up</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/sky2.png" />
+      <div class="caption">The Moon and the Milky Way</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/sky3.png" />
+      <div class="caption">Aries</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/sky4.png" />
+      <div class="caption">Just a cool picture i managed to grab lmao</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/sky5.png" />
+      <div class="caption">Im running out of captions 😭</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/sky6.png" />
+      <div class="caption">Oh i can do this one, The Phase of the Moon rn</div>
+    </div>
+  </div>
+
+<div class="lightbox" id="lightbox">
+  <img src="" id="lightbox-img" />
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.querySelectorAll('.gallery-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
